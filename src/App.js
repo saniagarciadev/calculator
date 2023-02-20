@@ -1,11 +1,14 @@
 import "./App.css";
+import { ResultProvider } from "./context/resultContext";
 import Calculator from "./Calculator";
 
 function App() {
   return (
-    <div className="App">
-      <Calculator />
-    </div>
+    <ResultProvider>
+      <div className="App">
+        <Calculator />
+      </div>
+    </ResultProvider>
   );
 }
 

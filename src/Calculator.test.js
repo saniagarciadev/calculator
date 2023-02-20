@@ -32,4 +32,12 @@ describe("<Calculator />", () => {
       ).toBeInTheDocument();
     });
   });
+  it("shows starting value", () => {
+    render(<Calculator />);
+    expect(
+      screen.getByRole("heading", {
+        name: /0/i,
+      })
+    ).toBeInTheDocument();
+  });
 });
