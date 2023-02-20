@@ -1,20 +1,20 @@
-import React, { useReducer, createContext, useMemo } from "react";
+import React, { useReducer, createContext } from "react";
 const initialState = {
   value: 0,
 };
 export const ResultContext = createContext(initialState);
 export const ACTIONS = {
-  INCREASE: "increase",
-  DECREASE: "decrease",
+  ADD: "increase",
+  SUBSTRACT: "decrease",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.INCREASE:
+    case ACTIONS.ADD:
       return {
         value: state.value + 1,
       };
-    case ACTIONS.DECREASE:
+    case ACTIONS.SUBSTRACT:
       return {
         value: state.value - 1,
       };
@@ -24,10 +24,13 @@ const reducer = (state, action) => {
 };
 export const ResultProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // (**)
-  const contextValue = useMemo(() => {
-    return { state, dispatch };
-  }, [state, dispatch]);
+
+  const add = () => dispatch({ type: ACTIONS.ADD });
+  const substract = () => dispatch({ type: ACTIONS.DECREASE });
+
+  const actions = { add, substract };
+
+  const contextValue = { state, actions };
   return (
     <ResultContext.Provider value={contextValue}>
       {children}
