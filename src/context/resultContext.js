@@ -1,6 +1,6 @@
 import React, { useReducer, createContext } from "react";
 const initialState = {
-  value: 0,
+  value: "0",
 };
 export const ResultContext = createContext(initialState);
 export const ACTIONS = {
@@ -10,9 +10,9 @@ export const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.ADD:
+    case "concat":
       return {
-        value: state.value + 1,
+        value: state.value === "0" ? action.value : state.value + action.value,
       };
     case ACTIONS.SUBSTRACT:
       return {
@@ -25,10 +25,13 @@ const reducer = (state, action) => {
 export const ResultProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const add = () => dispatch({ type: ACTIONS.ADD });
+  const concat = (value) => {
+    console.log(value);
+    dispatch({ type: "concat", value });
+  };
   const substract = () => dispatch({ type: ACTIONS.DECREASE });
 
-  const actions = { add, substract };
+  const actions = { concat, substract };
 
   const contextValue = { state, actions };
   return (
