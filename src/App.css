@@ -37,7 +37,8 @@
 .Display {
   width: 100%;
   max-width: -webkit-fill-available;
-  padding: 2rem;
+  height: 80px;
+  padding: 0 2rem;
   font-size: 1rem;
   text-align: right;
   color: black;
