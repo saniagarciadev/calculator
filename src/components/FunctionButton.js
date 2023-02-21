@@ -1,9 +1,16 @@
+import { useContext } from "react";
+import { ResultContext } from "../context/resultContext.js";
 import "../App.css";
 
-function Button({ name, propFunc }) {
+function Button({ operation }) {
+  const { actions } = useContext(ResultContext);
+
   return (
-    <button onClick={() => propFunc(name)} className="Button">
-      {name}
+    <button
+      onClick={() => actions && actions.operate(operation)}
+      className="Button"
+    >
+      {operation}
     </button>
   );
 }
