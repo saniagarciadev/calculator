@@ -57,5 +57,22 @@
 
 .ButtonSection {
   padding: 1rem;
+  display: grid;
+  grid-gap: 10px;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-areas:
+  "c div x min"
+  "a7 a8 a9 plus"
+  "a4 a5 a6 plus"
+  "a1 a2 a3 eq"
+  "a0 a0 none eq";
+  /* padding: 0px 0px 30px; */
+  /* width: 450px; */
+  margin: 0 auto;
+  /* @media (max-width: 500px) {
+    width: 100%;
+    margin: 0;
+  } */
 }
+
 
